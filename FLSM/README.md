@@ -35,12 +35,12 @@ For a base network and a required subnet count `n`:
 
 | Step | Value |
 |---|---|
-| Bits | 12 (`2^11 = 2048` too small → `2^12 = 4096 ≥ 3500`) |
-| NSM | /8 + 12 = **/20** |
+| Bits | 12 |
+| NSM | **/20** |
 | UF | 255.255.**240**.0 |
-| Increment | `2^(24-20) = 16` (3rd octet) |
-| Actual Net | `2^(20-8) = 4,096` |
-| Usable Hosts | `2^(32-20) - 2 = 4,094` |
+| Increment | `16`|
+| Actual Net | `4,096` |
+| Usable Hosts | `4,094` |
 
 **Verification — first 3 subnets**
 
@@ -50,9 +50,6 @@ For a base network and a required subnet count `n`:
 | 10.0.16.0 | 10.0.16.1 – 10.0.31.254 | 10.0.31.255 |
 | 10.0.32.0 | 10.0.32.1 – 10.0.47.254 | 10.0.47.255 |
 
-*Observation: with a /20 mask on an /8 base, the increment lands in the 3rd octet — the 2nd octet is fully consumed as network bits before reaching it.*
-
----
 
 ## Lab Exercise 2 — Class B: `172.16.0.0/16`, 100 networks required
 
@@ -60,12 +57,12 @@ For a base network and a required subnet count `n`:
 
 | Step | Value |
 |---|---|
-| Bits | 7 (`2^7 = 128 ≥ 100`) |
-| NSM | /16 + 7 = **/23** |
+| Bits | 7 |
+| NSM | **/23** |
 | UF | 255.255.**254**.0 |
-| Increment | `2^(24-23) = 2` (3rd octet) |
-| Actual Net | `2^(23-16) = 128` |
-| Usable Hosts | `2^(32-23) - 2 = 510` |
+| Increment | `2` |
+| Actual Net | `128` |
+| Usable Hosts | `10` |
 
 **Verification — first 3 subnets**
 
@@ -75,9 +72,7 @@ For a base network and a required subnet count `n`:
 | 172.16.2.0 | 172.16.2.1 – 172.16.3.254 | 172.16.3.255 |
 | 172.16.4.0 | 172.16.4.1 – 172.16.5.254 | 172.16.5.255 |
 
-*Observation: with a /23 mask, the increment applies to the 3rd octet, not the 4th, since the mask crosses into that octet.*
 
----
 
 ## Lab Exercise 3 — Class C: `192.168.50.0/24`, 10 networks required
 
@@ -85,12 +80,12 @@ For a base network and a required subnet count `n`:
 
 | Step | Value |
 |---|---|
-| Bits | 4 (`2^4 = 16 ≥ 10`) |
-| NSM | /24 + 4 = **/28** |
+| Bits | 4 |
+| NSM | **/28** |
 | UF | 255.255.255.**240** |
-| Increment | `2^(32-28) = 16` |
-| Actual Net | `2^(28-24) = 16` |
-| Usable Hosts | `2^(32-28) - 2 = 14` |
+| Increment | `16` |
+| Actual Net | `16` |
+| Usable Hosts | `14` |
 
 **Verification — first 4 subnets**
 
